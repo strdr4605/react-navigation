@@ -40,17 +40,17 @@
   },
   "homepage": "https://github.com/react-navigation/tabs#readme",
   "dependencies": {
-    "hoist-non-react-statics": "^3.3.0",
+    "hoist-non-react-statics": "^3.3.2",
     "react-lifecycles-compat": "^3.0.4",
     "react-native-safe-area-view": "^0.14.6",
     "react-native-tab-view": "^2.11.0"
   },
   "devDependencies": {
-    "del-cli": "^3.0.0",
-    "@react-native-community/bob": "^0.6.1",
+    "@react-native-community/bob": "^0.8.0",
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/react": "^16.8.17",
-    "@types/react-native": "^0.57.57",
+    "@types/react-native": "^0.61.12",
+    "del-cli": "^3.0.0",
     "react": "~16.9.0",
     "react-native": "~0.61.5",
     "react-native-gesture-handler": "^1.4.1",

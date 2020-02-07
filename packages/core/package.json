@@ -34,14 +34,14 @@
   },
   "homepage": "https://github.com/react-navigation/react-navigation-core#readme",
   "dependencies": {
-    "hoist-non-react-statics": "^3.3.0",
-    "path-to-regexp": "^1.7.0",
+    "hoist-non-react-statics": "^3.3.2",
+    "path-to-regexp": "^6.1.0",
     "query-string": "^6.4.2",
     "react-is": "^16.8.6"
   },
   "devDependencies": {
+    "@react-native-community/bob": "^0.8.0",
     "del-cli": "^3.0.0",
-    "@react-native-community/bob": "^0.7.0",
     "react": "~16.9.0"
   },
   "peerDependencies": {
