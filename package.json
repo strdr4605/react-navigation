@@ -3,6 +3,7 @@
   "private": true,
   "workspaces": {
     "packages": [
+      "example",
       "packages/*"
     ]
   },
@@ -62,8 +63,9 @@
       "<rootDir>/jest/setup.js"
     ],
     "moduleNameMapper": {
-      "@react-navigation/([^/]+)": "<rootDir>/packages/$1/src",
-      "react-navigation-([^/]+)": "<rootDir>/packages/$1/src"
+      "react-navigation": "<rootDir>/packages/react-navigation/src",
+      "react-navigation-([^/]+)": "<rootDir>/packages/$1/src",
+      "@react-navigation/([^/]+)": "<rootDir>/packages/$1/src"
     },
     "preset": "react-native"
   },
