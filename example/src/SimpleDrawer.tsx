@@ -1,11 +1,6 @@
 import React from 'react';
 import { Button, ScrollView, StyleSheet, View } from 'react-native';
 import {
-  createStackNavigator,
-  NavigationStackProp,
-  NavigationStackScreenComponent,
-} from 'react-navigation-stack';
-import {
   ThemeColors,
   useTheme,
   Themed,
@@ -16,6 +11,8 @@ import {
   createDrawerNavigator,
   NavigationDrawerOptions,
   NavigationDrawerScreenProps,
+  NavigationDrawerProp,
+  NavigationDrawerScreenComponent,
 } from 'react-navigation-drawer';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -29,7 +26,7 @@ const MyNavScreen = ({
   navigation,
   banner,
 }: {
-  navigation: NavigationStackProp<NavigationRoute, Params>;
+  navigation: NavigationDrawerProp<NavigationRoute, Params>;
   banner: string;
 }) => {
   let theme = useTheme();
@@ -125,82 +122,65 @@ const MyNavScreen = ({
   );
 };
 
-const InboxScreen: NavigationStackScreenComponent<Params> = ({
+const InboxScreen: NavigationDrawerScreenComponent<Params> = ({
   navigation,
 }) => <MyNavScreen banner="Inbox Screen" navigation={navigation} />;
-InboxScreen.navigationOptions = {
-  headerTitle: 'Inbox',
-};
 
-const EmailScreen: NavigationStackScreenComponent<Params> = ({
+const EmailScreen: NavigationDrawerScreenComponent<Params> = ({
   navigation,
 }) => <MyNavScreen banner="Email Screen" navigation={navigation} />;
 
-const DraftsScreen: NavigationStackScreenComponent<Params> = ({
+const DraftsScreen: NavigationDrawerScreenComponent<Params> = ({
   navigation,
 }) => <MyNavScreen banner="Drafts Screen" navigation={navigation} />;
-DraftsScreen.navigationOptions = {
-  headerTitle: 'Drafts',
-};
-
-const InboxStack = createStackNavigator(
-  {
-    Inbox: { screen: InboxScreen },
-    Email: { screen: EmailScreen },
-  },
-  {
-    navigationOptions: ({ navigation }: NavigationDrawerScreenProps) => {
-      const options: NavigationDrawerOptions = {
-        drawerLabel: 'Inbox',
-        drawerLockMode: (
-          navigation.state.routes[navigation.state.index].params || {}
-        ).drawerLockMode,
-        drawerIcon: ({ tintColor }) => (
-          <MaterialIcons
-            name="move-to-inbox"
-            size={24}
-            style={{ color: tintColor }}
-          />
-        ),
-      };
-
-      return options;
-    },
-  }
-);
-
-const DraftsStack = createStackNavigator(
-  {
-    Drafts: { screen: DraftsScreen },
-    Email: { screen: EmailScreen },
-  },
-  {
-    navigationOptions: ({ navigation }: NavigationDrawerScreenProps) => {
-      const options: NavigationDrawerOptions = {
-        drawerLabel: 'Drafts',
-        drawerLockMode: (
-          navigation.state.routes[navigation.state.index].params || {}
-        ).drawerLockMode,
-        drawerIcon: ({ tintColor }) => (
-          <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
-        ),
-      };
-
-      return options;
-    },
-  }
-);
 
 function createDrawerExample(options = {}) {
   let DrawerExample = createDrawerNavigator(
     {
       Inbox: {
         path: '/',
-        screen: InboxStack,
+        screen: InboxScreen,
+        navigationOptions: ({ navigation }: NavigationDrawerScreenProps) => {
+          const options: NavigationDrawerOptions = {
+            drawerLabel: 'Inbox',
+            drawerLockMode: (
+              navigation.state.routes[navigation.state.index].params || {}
+            ).drawerLockMode,
+            drawerIcon: ({ tintColor }) => (
+              <MaterialIcons
+                name="move-to-inbox"
+                size={24}
+                style={{ color: tintColor }}
+              />
+            ),
+          };
+
+          return options;
+        },
       },
       Drafts: {
         path: '/sent',
-        screen: DraftsStack,
+        screen: DraftsScreen,
+        navigationOptions: ({ navigation }: NavigationDrawerScreenProps) => {
+          const options: NavigationDrawerOptions = {
+            drawerLabel: 'Drafts',
+            drawerLockMode: (
+              navigation.state.routes[navigation.state.index].params || {}
+            ).drawerLockMode,
+            drawerIcon: ({ tintColor }) => (
+              <MaterialIcons
+                name="drafts"
+                size={24}
+                style={{ color: tintColor }}
+              />
+            ),
+          };
+
+          return options;
+        },
+      },
+      Email: {
+        screen: EmailScreen,
       },
     },
     {

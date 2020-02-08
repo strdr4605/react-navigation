@@ -1,14 +1,10 @@
 import React from 'react';
 import { Button, ScrollView } from 'react-native';
-import {
-  createStackNavigator,
-  NavigationStackScreenComponent,
-  NavigationStackProp,
-} from 'react-navigation-stack';
 import { Themed, SafeAreaView } from 'react-navigation';
 import {
   createDrawerNavigator,
   NavigationDrawerScreenComponent,
+  NavigationDrawerProp,
 } from 'react-navigation-drawer';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -20,7 +16,7 @@ const MyNavScreen = ({
   navigation,
   banner,
 }: {
-  navigation: NavigationStackProp;
+  navigation: NavigationDrawerProp;
   banner: string;
 }) => (
   <ScrollView>
@@ -37,62 +33,47 @@ const MyNavScreen = ({
   </ScrollView>
 );
 
-const InboxScreen: NavigationStackScreenComponent = ({ navigation }) => (
+const InboxScreen: NavigationDrawerScreenComponent = ({ navigation }) => (
   <MyNavScreen banner="Inbox Screen" navigation={navigation} />
 );
-InboxScreen.navigationOptions = {
-  headerTitle: 'Inbox',
-};
 
-const EmailScreen: NavigationStackScreenComponent = ({ navigation }) => (
+const EmailScreen: NavigationDrawerScreenComponent = ({ navigation }) => (
   <MyNavScreen banner="Email Screen" navigation={navigation} />
 );
 
-const DraftsScreen: NavigationStackScreenComponent = ({ navigation }) => (
+const DraftsScreen: NavigationDrawerScreenComponent = ({ navigation }) => (
   <MyNavScreen banner="Drafts Screen" navigation={navigation} />
 );
-
-DraftsScreen.navigationOptions = {
-  headerTitle: 'Drafts',
-};
-
-const InboxStack: NavigationDrawerScreenComponent = createStackNavigator({
-  Inbox: { screen: InboxScreen },
-  Email: { screen: EmailScreen },
-});
-
-InboxStack.navigationOptions = {
-  drawerLabel: 'Inbox',
-  drawerIcon: ({ tintColor }) => (
-    <MaterialIcons
-      name="move-to-inbox"
-      size={24}
-      style={{ color: tintColor }}
-    />
-  ),
-};
-
-const DraftsStack: NavigationDrawerScreenComponent = createStackNavigator({
-  Drafts: { screen: DraftsScreen },
-  Email: { screen: EmailScreen },
-});
-
-DraftsStack.navigationOptions = {
-  drawerLabel: 'Drafts',
-  drawerIcon: ({ tintColor }) => (
-    <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
-  ),
-};
 
 const DrawerExample = createDrawerNavigator(
   {
     Inbox: {
       path: '/',
-      screen: InboxStack,
+      screen: InboxScreen,
+      navigationOptions: {
+        drawerLabel: 'Inbox',
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons
+            name="move-to-inbox"
+            size={24}
+            style={{ color: tintColor }}
+          />
+        ),
+      },
     },
     Drafts: {
       path: '/sent',
-      screen: DraftsStack,
+      screen: DraftsScreen,
+      navigationOptions: {
+        drawerLabel: 'Drafts',
+        drawerIcon: ({ tintColor }) => (
+          <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
+        ),
+      },
+    },
+    Email: {
+      path: '/sent',
+      screen: EmailScreen,
     },
   },
   {
