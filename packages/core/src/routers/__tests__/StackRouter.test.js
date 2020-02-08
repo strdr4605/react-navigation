@@ -1081,7 +1081,10 @@ describe('StackRouter', () => {
       key: 'StackKey',
       index: 1,
       isTransitioning: true,
-      routes: [{ key: 'a', routeName: 'Foo' }, { key: 'b', routeName: 'Foo' }],
+      routes: [
+        { key: 'a', routeName: 'Foo' },
+        { key: 'b', routeName: 'Foo' },
+      ],
     };
     const outputState = router.getStateForAction(
       {
@@ -1108,7 +1111,10 @@ describe('StackRouter', () => {
       key: 'StackKey',
       index: 1,
       isTransitioning: true,
-      routes: [{ key: 'a', routeName: 'Foo' }, { key: 'b', routeName: 'Foo' }],
+      routes: [
+        { key: 'a', routeName: 'Foo' },
+        { key: 'b', routeName: 'Foo' },
+      ],
     };
     const outputState = router.getStateForAction(
       {

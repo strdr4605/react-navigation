@@ -41,11 +41,11 @@ export type StackNavigationEventMap = {
   transitionEnd: { data: { closing: boolean } };
 };
 
-export type StackNavigationHelpers = NavigationProp<NavigationStackState>
+export type StackNavigationHelpers = NavigationProp<NavigationStackState>;
 
 export type StackNavigationProp<
-State = NavigationRoute,
-Params = NavigationParams
+  State = NavigationRoute,
+  Params = NavigationParams
 > = NavigationScreenProp<State, Params> & {
   push: (
     routeName: string,
@@ -250,7 +250,7 @@ export type StackDescriptor = NavigationDescriptor<
   NavigationParams,
   StackNavigationOptions,
   StackNavigationProp
->
+>;
 
 export type StackDescriptorMap = {
   [key: string]: StackDescriptor;

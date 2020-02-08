@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { View, Platform, StyleSheet } from 'react-native';
 import { SafeAreaConsumer, EdgeInsets } from 'react-native-safe-area-context';
-import { GestureHandlerRootView } from 'react-native-gesture-handler'; import {
-   StackActions,
-   NavigationState as StackNavigationState,
-   SceneView,
- } from 'react-navigation';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {
+  StackActions,
+  NavigationState as StackNavigationState,
+  SceneView,
+} from 'react-navigation';
 
 import CardStack from './CardStack';
 import KeyboardManager from '../KeyboardManager';
@@ -362,11 +363,10 @@ export default class StackView extends React.Component<Props, State> {
     closing: boolean
   ) => {
     const { descriptors } = this.props;
-    const descriptor = descriptors[route.key] || this.state.descriptors[route.key];
+    const descriptor =
+      descriptors[route.key] || this.state.descriptors[route.key];
 
-    descriptor &&
-      descriptor.options.onTransitionStart &&
-      descriptor.options.onTransitionStart({ closing });
+    descriptor?.options.onTransitionStart?.({ closing });
   };
 
   private handleTransitionEnd = (
@@ -374,11 +374,10 @@ export default class StackView extends React.Component<Props, State> {
     closing: boolean
   ) => {
     const { descriptors } = this.props;
-    const descriptor = descriptors[route.key] || this.state.descriptors[route.key];
+    const descriptor =
+      descriptors[route.key] || this.state.descriptors[route.key];
 
-    descriptor &&
-      descriptor.options.onTransitionEnd &&
-      descriptor.options.onTransitionEnd({ closing });
+    descriptor?.options.onTransitionEnd?.({ closing });
   };
 
   render() {

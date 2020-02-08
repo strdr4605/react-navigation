@@ -104,7 +104,7 @@ export default (routeConfigs, stackConfig = {}) => {
       ...route,
       ...(params ? { params } : {}),
       routeName: initialRouteName,
-      key: action.key || (initialRouteKey || generateKey()),
+      key: action.key || initialRouteKey || generateKey(),
     };
     return {
       key: 'StackRouterRoot',

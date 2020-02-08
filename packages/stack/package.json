@@ -46,6 +46,7 @@
     "@types/color": "^3.0.1",
     "@types/react": "^16.9.19",
     "@types/react-native": "^0.61.12",
+    "@types/react-test-renderer": "^16.9.2",
     "del-cli": "^3.0.0",
     "react": "~16.9.0",
     "react-native": "~0.61.4",
@@ -53,6 +54,7 @@
     "react-native-safe-area-context": "^0.7.2",
     "react-native-screens": "^2.0.0-alpha.22",
     "react-navigation": "^4.1.1",
+    "react-test-renderer": "~16.9.0",
     "typescript": "^3.7.5"
   },
   "peerDependencies": {

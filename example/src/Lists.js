@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, TouchableOpacity, View, Text } from 'react-native';
-import { MaterialIcons } from 'react-native-vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { createStackNavigator } from 'react-navigation-stack';
 import { SectionList, FlatList } from '@react-navigation/native';
 

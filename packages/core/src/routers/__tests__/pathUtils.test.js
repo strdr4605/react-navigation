@@ -52,10 +52,14 @@ it('urlToPathAndParams with duplicate prefix in query parameters', () => {
 });
 
 it('urlToPathAndParams with array of custom delimiters, should use first match', () => {
-  const { path, params } = urlToPathAndParams(
-    'https://example.com/foo/bar?asdf=1',
-    ['baz', 'https://example.com/', 'https://example.com/foo']
-  );
+  const {
+    path,
+    params,
+  } = urlToPathAndParams('https://example.com/foo/bar?asdf=1', [
+    'baz',
+    'https://example.com/',
+    'https://example.com/foo',
+  ]);
   expect(path).toBe('foo/bar');
   expect(params).toEqual({ asdf: '1' });
 });

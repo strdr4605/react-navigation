@@ -11,6 +11,7 @@ export default function HeaderTitle({ tintColor, style, ...rest }: Props) {
   const { colors } = useTheme();
 
   return (
+    // @ts-ignore
     <Animated.Text
       accessibilityRole="header"
       numberOfLines={1}

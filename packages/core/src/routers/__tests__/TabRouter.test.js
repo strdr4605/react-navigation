@@ -661,7 +661,10 @@ describe('TabRouter', () => {
     expect(state0).toEqual({
       index: 0,
       isTransitioning: false,
-      routes: [{ key: 'a', routeName: 'a' }, { key: 'b', routeName: 'b' }],
+      routes: [
+        { key: 'a', routeName: 'a' },
+        { key: 'b', routeName: 'b' },
+      ],
     });
 
     const params = { key: 'value' };

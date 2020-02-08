@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ScrollView, TouchableOpacity, View } from 'react-native';
-import { MaterialIcons } from 'react-native-vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Themed } from '@react-navigation/native';
 import { ThemeContext } from '@react-navigation/core';

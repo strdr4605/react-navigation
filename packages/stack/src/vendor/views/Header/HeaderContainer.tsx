@@ -95,7 +95,7 @@ export default function HeaderContainer({
           insets,
           scene,
           previous,
-          navigation:  scene.descriptor.navigation as StackNavigationProp,
+          navigation: scene.descriptor.navigation as StackNavigationProp,
           styleInterpolator:
             mode === 'float'
               ? isHeaderStatic

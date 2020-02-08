@@ -57,8 +57,9 @@ const Header = React.memo(function Header(props: StackHeaderProps) {
       }
       onGoBack={
         previous
-        // @ts-ignore
-          ? () => navigation.dispatch(StackActions.pop({ key: scene.route.key }))
+          ? // @ts-ignore
+            () =>
+              navigation.dispatch(StackActions.pop({ key: scene.route.key }))
           : undefined
       }
       styleInterpolator={styleInterpolator}

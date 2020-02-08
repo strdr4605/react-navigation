@@ -3,7 +3,7 @@ import {
   View,
   StyleSheet,
   AccessibilityRole,
-  AccessibilityState,
+  AccessibilityStates,
 } from 'react-native';
 import { NavigationRoute } from 'react-navigation';
 
@@ -36,7 +36,7 @@ type Props = NavigationViewProps &
     getAccessibilityStates: (props: {
       route: NavigationRoute;
       focused: boolean;
-    }) => AccessibilityState[];
+    }) => AccessibilityStates[];
     navigation: NavigationTabProp;
     descriptors: SceneDescriptorMap;
     screenProps?: unknown;
@@ -54,7 +54,7 @@ class TabNavigationView extends React.PureComponent<Props, State> {
       focused,
     }: {
       focused: boolean;
-    }): AccessibilityState[] => (focused ? ['selected'] : []),
+    }): AccessibilityStates[] => (focused ? ['selected'] : []),
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {

@@ -20,7 +20,10 @@ import {
 
 class RightDrawer extends Component<DrawerContentComponentProps> {
   state = {
-    categories: [{ i: 'c1', n: 'name1' }, { i: 'c2', n: 'name2' }],
+    categories: [
+      { i: 'c1', n: 'name1' },
+      { i: 'c2', n: 'name2' },
+    ],
   };
 
   render() {

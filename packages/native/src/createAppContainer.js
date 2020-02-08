@@ -198,7 +198,7 @@ export default function createNavigationContainer(Component) {
         return;
       }
 
-      if (__DEV__ && !this.props.detached) {
+      if (process.env.NODE_ENV !== 'production' && !this.props.detached) {
         if (_statefulContainerCount > 0) {
           // Temporarily only show this on iOS due to this issue:
           // https://github.com/react-navigation/react-navigation/issues/4196#issuecomment-390827829
@@ -395,9 +395,7 @@ export default function createNavigationContainer(Component) {
         return 'light';
       } else {
         console.warn(
-          `Invalid theme provided: ${
-            this.props.theme
-          }. Only 'light' and 'dark' are supported. Falling back to 'light'`
+          `Invalid theme provided: ${this.props.theme}. Only 'light' and 'dark' are supported. Falling back to 'light'`
         );
         return 'light';
       }
