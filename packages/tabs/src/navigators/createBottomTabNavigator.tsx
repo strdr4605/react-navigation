@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { NavigationRoute } from 'react-navigation';
 
-// eslint-disable-next-line import/no-unresolved
 import { ScreenContainer } from 'react-native-screens';
 
 import createTabNavigator, {

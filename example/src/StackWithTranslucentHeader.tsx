@@ -25,6 +25,27 @@ interface MyNavScreenProps {
 }
 
 class MyNavScreen extends React.Component<MyNavScreenProps> {
+  // Inset to compensate for navigation bar being transparent.
+  // And improved abstraction for this will be built in to react-navigation
+  // at some point.
+
+  getHeaderInset(): any {
+    const HEADER_HEIGHT =
+      getStatusBarHeight() + Platform.select({ ios: 44, default: 56 });
+
+    return Platform.select({
+      android: {
+        contentContainerStyle: {
+          paddingTop: HEADER_HEIGHT,
+        },
+      },
+      ios: {
+        contentInset: { top: HEADER_HEIGHT },
+        contentOffset: { y: -HEADER_HEIGHT },
+      },
+    });
+  }
+
   render() {
     const { navigation, banner } = this.props;
     const { push, replace, popToTop, pop } = navigation;
@@ -50,27 +71,6 @@ class MyNavScreen extends React.Component<MyNavScreenProps> {
       </ScrollView>
     );
   }
-
-  // Inset to compensate for navigation bar being transparent.
-  // And improved abstraction for this will be built in to react-navigation
-  // at some point.
-
-  getHeaderInset(): any {
-    const HEADER_HEIGHT =
-      getStatusBarHeight() + Platform.select({ ios: 44, default: 56 });
-
-    return Platform.select({
-      android: {
-        contentContainerStyle: {
-          paddingTop: HEADER_HEIGHT,
-        },
-      },
-      ios: {
-        contentInset: { top: HEADER_HEIGHT },
-        contentOffset: { y: -HEADER_HEIGHT },
-      },
-    });
-  }
 }
 
 interface MyHomeScreenProps {
@@ -78,6 +78,7 @@ interface MyHomeScreenProps {
 }
 
 class MyHomeScreen extends React.Component<MyHomeScreenProps> {
+  // eslint-disable-next-line react/sort-comp
   static navigationOptions = {
     title: 'Welcome',
   };

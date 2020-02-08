@@ -179,6 +179,7 @@ interface State {
 }
 
 class MainScreen extends React.Component<any, State> {
+  // eslint-disable-next-line react/sort-comp
   static contextType = ThemeContext;
   context!: React.ContextType<typeof ThemeContext>;
 

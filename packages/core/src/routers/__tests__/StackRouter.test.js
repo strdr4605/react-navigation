@@ -4,7 +4,7 @@ import React from 'react';
 
 import StackRouter from '../StackRouter';
 import * as StackActions from '../StackActions';
-import * as NavigationActions from '../../NavigationActions';
+import * as NavigationActions from '../../NavigationActions.ts';
 import { _TESTING_ONLY_normalize_keys } from '../KeyGenerator.ts';
 
 beforeEach(() => {

@@ -53,6 +53,7 @@ const Buttons = withNavigation((props: { navigation: NavigationStackProp }) => (
 ));
 
 class ListScreen extends React.Component {
+  // eslint-disable-next-line react/sort-comp
   static navigationOptions = {
     title: 'List',
   };

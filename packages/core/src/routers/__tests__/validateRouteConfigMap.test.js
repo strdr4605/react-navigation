@@ -48,6 +48,7 @@ describe('validateRouteConfigMap', () => {
       validateRouteConfigMap(invalidMap)
     ).toThrowErrorMatchingSnapshot();
   });
+  // eslint-disable-next-line jest/expect-expect
   it('Succeeds on a valid config', () => {
     const validMap = {
       Home: {

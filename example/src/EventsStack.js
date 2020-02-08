@@ -32,14 +32,14 @@ class FocusTagWithNav extends React.Component {
       this.setMode('didBlur');
     });
   }
+  componentWillUnmount() {
+    this._isUnmounted = true;
+  }
   setMode = mode => {
     if (!this._isUnmounted) {
       this.setState({ mode });
     }
   };
-  componentWillUnmount() {
-    this._isUnmounted = true;
-  }
   render() {
     const key = this.props.navigation.state.key;
     return (

@@ -18,6 +18,11 @@ class SignInScreen extends React.Component<NavigationStackScreenProps> {
     title: 'Please sign in',
   };
 
+  _signInAsync = async () => {
+    await AsyncStorage.setItem('userToken', 'abc');
+    this.props.navigation.navigate('Home');
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,16 +35,20 @@ class SignInScreen extends React.Component<NavigationStackScreenProps> {
       </View>
     );
   }
-
-  _signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('Home');
-  };
 }
 
 class HomeScreen extends React.Component<NavigationStackScreenProps> {
   static navigationOptions = {
     title: 'Welcome to the app!',
+  };
+
+  _showMoreApp = () => {
+    this.props.navigation.navigate('Other');
+  };
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
   };
 
   render() {
@@ -51,20 +60,16 @@ class HomeScreen extends React.Component<NavigationStackScreenProps> {
       </View>
     );
   }
-
-  _showMoreApp = () => {
-    this.props.navigation.navigate('Other');
-  };
-
-  _signOutAsync = async () => {
-    await AsyncStorage.clear();
-    this.props.navigation.navigate('Auth');
-  };
 }
 
 class OtherScreen extends React.Component<NavigationStackScreenProps> {
   static navigationOptions = {
     title: 'Lots of features here',
+  };
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
   };
 
   render() {
@@ -75,11 +80,6 @@ class OtherScreen extends React.Component<NavigationStackScreenProps> {
       </View>
     );
   }
-
-  _signOutAsync = async () => {
-    await AsyncStorage.clear();
-    this.props.navigation.navigate('Auth');
-  };
 }
 
 class LoadingScreen extends React.Component<NavigationStackScreenProps> {

@@ -11,5 +11,5 @@ it('adds isLandscape to props', () => {
 
 it('calculates orientation correctly', () => {
   const isLandscape = isOrientationLandscape({ width: 10, height: 1 });
-  expect(isLandscape).toBeTruthy();
+  expect(isLandscape).toBe(true);
 });

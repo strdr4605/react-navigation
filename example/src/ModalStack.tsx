@@ -74,6 +74,7 @@ class ListScreen extends React.Component<
   NavigationStackScreenProps,
   { isInverted: boolean }
 > {
+  // eslint-disable-next-line react/sort-comp
   static navigationOptions = {
     title: 'My Modal',
   };

@@ -161,6 +161,7 @@ const SimpleTabs = createMaterialTopTabNavigator(
 );
 
 class TabNavigator extends React.Component<Props> {
+  // eslint-disable-next-line react/sort-comp
   static contextType = ThemeContext;
 
   static router = SimpleTabs.router;

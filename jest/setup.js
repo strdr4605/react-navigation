@@ -44,3 +44,7 @@ jest.mock('react-native-gesture-handler', () => ({
     END: 5,
   },
 }));
+
+jest.mock('react-native-reanimated', () =>
+  require('react-native-reanimated/mock')
+);

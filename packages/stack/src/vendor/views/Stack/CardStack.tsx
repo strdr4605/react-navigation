@@ -9,7 +9,6 @@ import {
   ViewProps,
 } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
-// eslint-disable-next-line import/no-unresolved
 import { ScreenContainer, Screen, screensEnabled } from 'react-native-screens'; // Import with * as to prevent getters being called
 import { NavigationState as StackNavigationState } from 'react-navigation';
 

@@ -4,7 +4,7 @@ import {
   createMaterialBottomTabNavigator,
   NavigationMaterialBottomTabOptions,
 } from 'react-navigation-material-bottom-tabs';
-import PhotoGrid from './shared/PhotoGrid';
+import PhotoGrid from './Shared/PhotoGrid';
 import tabBarIcon from './Shared/tabBarIcon';
 
 class Album extends React.Component {

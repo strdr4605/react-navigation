@@ -65,6 +65,7 @@ class LoremScreen extends React.Component {
           .split('\n')
           .map((p, i) => (
             <Text
+              // eslint-disable-next-line react/no-array-index-key
               key={i}
               style={{ marginBottom: 10, marginTop: 8, marginHorizontal: 10 }}
             >

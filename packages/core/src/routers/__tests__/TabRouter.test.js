@@ -3,7 +3,7 @@
 import React from 'react';
 import TabRouter from '../TabRouter';
 
-import * as NavigationActions from '../../NavigationActions';
+import * as NavigationActions from '../../NavigationActions.ts';
 
 const INIT_ACTION = { type: NavigationActions.INIT };
 

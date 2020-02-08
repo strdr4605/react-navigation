@@ -4,8 +4,6 @@ import { render, fireEvent } from 'react-native-testing-library';
 import { createAppContainer } from '@react-navigation/native';
 import createSwitchNavigator from '../createSwitchNavigator';
 
-jest.mock('@react-navigation/core', () => require('../../index'));
-
 const getActiveRouteName = state => state.routes[state.index].routeName;
 const createScreen = (routeName, nextRouteName) => props => (
   <View>

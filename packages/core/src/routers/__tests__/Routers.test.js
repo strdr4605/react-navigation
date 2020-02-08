@@ -6,7 +6,7 @@ import StackRouter from '../StackRouter';
 import TabRouter from '../TabRouter';
 import SwitchRouter from '../SwitchRouter';
 
-import * as NavigationActions from '../../NavigationActions';
+import * as NavigationActions from '../../NavigationActions.ts';
 import * as StackActions from '../StackActions';
 import { _TESTING_ONLY_normalize_keys } from '../KeyGenerator.ts';
 
@@ -35,18 +35,18 @@ Object.keys(ROUTERS).forEach(routerName => {
         }
       }
       class BarView extends React.Component {
+        static navigationOptions = { title: 'BarTitle' };
         render() {
           return <div />;
         }
-        static navigationOptions = { title: 'BarTitle' };
       }
       class BazView extends React.Component {
-        render() {
-          return <div />;
-        }
         static navigationOptions = ({ navigation }) => ({
           title: `Baz-${navigation.state.params.id}`,
         });
+        render() {
+          return <div />;
+        }
       }
       const router = Router({
         Foo: { screen: FooView },
