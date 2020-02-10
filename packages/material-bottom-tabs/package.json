@@ -48,14 +48,14 @@
     "react-native-gesture-handler": "^1.4.1",
     "react-native-paper": "^3.1.1",
     "react-native-reanimated": "^1.2.0",
-    "react-navigation": "^4.0.7",
+    "react-navigation": "^4.1.1",
     "typescript": "^3.5.2"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
     "react-native-paper": "^2.2.2 || ^3.0.0",
-    "react-navigation": "^4.0.7"
+    "react-navigation": "^4.1.1"
   },
   "@react-native-community/bob": {
     "source": "src",
