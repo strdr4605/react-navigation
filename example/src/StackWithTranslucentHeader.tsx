@@ -17,7 +17,7 @@ import {
 } from 'react-navigation-stack';
 import { Button } from './Shared/ButtonWithMargin';
 import { HeaderButtons } from './Shared/HeaderButtons';
-import SampleText from './SampleText';
+import SampleText from './Shared/SampleText';
 
 interface MyNavScreenProps {
   navigation: NavigationStackProp;

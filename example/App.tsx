@@ -1,4 +1,5 @@
 import React from 'react';
+import { registerRootComponent } from 'expo';
 import {
   Animated,
   Image,
@@ -23,154 +24,226 @@ import {
 } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AnimatedSwitch from './src/AnimatedSwitch';
+import BottomTabs from './src/BottomTabs';
 import CustomTabs from './src/CustomTabs';
 import CustomTabUI from './src/CustomTabUI';
 import Drawer from './src/Drawer';
 import ModalStack from './src/ModalStack';
 import SimpleStack from './src/SimpleStack';
-import SimpleTabs from './src/SimpleTabs';
+import MaterialBottomTabs from './src/MaterialBottomTabs';
+import StacksAndKeys from './src/StacksAndKeys';
 import StacksInTabs from './src/StacksInTabs';
 import StacksOverTabs from './src/StacksOverTabs';
 import StacksOverTopTabs from './src/StacksOverTopTabs';
-import StacksAndKeys from './src/StacksAndKeys';
 import StackWithCustomHeaderBackImage from './src/StackWithCustomHeaderBackImage';
 import StackWithHeaderPreset from './src/StackWithHeaderPreset';
 import StackWithTranslucentHeader from './src/StackWithTranslucentHeader';
 import SwitchWithStacks from './src/SwitchWithStacks';
 import TabsInDrawer from './src/TabsInDrawer';
+import DragLimitedToModal from './src/DragLimitedToModal';
+import EventsStack from './src/EventsStack';
+import FullScreen from './src/FullScreen';
+import GestureInteraction from './src/GestureInteraction';
+import {
+  HeaderBackgroundDefault,
+  HeaderBackgroundFade,
+} from './src/HeaderBackgrounds';
+import HeaderPreset from './src/HeaderPreset';
+import IconTabs from './src/IconTabs';
+import ImageStack from './src/ImageStack';
+import ImmediateTransition from './src/ImmediateTransition';
+import LifecycleInteraction from './src/LifecycleInteraction';
+import Lists from './src/Lists';
+import MaterialTopTabs from './src/MaterialTopTabs';
+import ModalPresentation from './src/ModalPresentation';
+import ParallaxDrawer from './src/ParallaxDrawer';
+import PerScreenTransitions from './src/PerScreenTransitions';
+import RevealStack from './src/RevealStack';
+import RTLDrawer from './src/RTLDrawer';
+import StackWithRefocus from './src/StackWithRefocus';
+import ShiftingTabs from './src/ShiftingTabs';
+import { SimpleDrawer, SimpleDrawerUnmountInactive } from './src/SimpleDrawer';
+import StackAnimationConsumerStack from './src/StackAnimationConsumerStack';
+import StackWithDrawer from './src/StackWithDrawer';
+import StyledDrawer from './src/StyledDrawer';
+import StackWithInput from './src/StackWithInput';
+import TransparentStack from './src/TransparentStack';
 
-const ExampleInfo: any = {
-  CustomTabUI: {
-    description: 'Render additional views around a Tab navigator',
-    name: 'Custom Tabs UI',
+const ExampleInfo = {
+  SimpleStack: {
+    name: 'Simple Stack',
+    screen: SimpleStack,
   },
-  CustomTabs: {
-    description: 'Custom tabs with tab router',
-    name: 'Custom Tabs',
+  BottomTabs: {
+    name: 'Bottom Tabs Example',
+    screen: BottomTabs,
   },
-  CustomTransitioner: {
-    description: 'Custom transitioner with stack router',
-    name: 'Custom Transitioner',
-  },
-  Drawer: {
-    description: 'Android-style drawer navigation',
-    name: 'Drawer Example',
-  },
-  InactiveStack: {
-    description:
-      'An inactive route in a stack should be given the opportunity to handle actions',
-    name: 'Navigate idempotently to stacks in inactive routes',
-  },
-  KeyboardHandlingExample: {
-    description:
-      'Demo automatic handling of keyboard showing/hiding inside StackNavigator',
-    name: 'Keyboard Handling Example',
-  },
-  LinkStack: {
-    description: 'Deep linking into a route in stack',
-    name: 'Link in Stack',
-  },
-  LinkTabs: {
-    description: 'Deep linking into a route in tab',
-    name: 'Link to Settings Tab',
+  MaterialBottomTabs: {
+    name: 'Material Bottom Tabs Example',
+    screen: MaterialBottomTabs,
   },
   ModalStack: {
-    description:
-      Platform.OS === 'ios'
-        ? 'Stack navigation with modals'
-        : 'Dynamically showing and hiding the header',
     name:
       Platform.OS === 'ios'
         ? 'Modal Stack Example'
-        : 'Stack with Dynamic Header',
-  },
-  SimpleStack: {
-    description: 'A card stack',
-    name: 'Stack Example',
-  },
-  SimpleTabs: {
-    description: 'Tabs following platform conventions',
-    name: 'Tabs Example',
+        : 'Stack with showing/hiding Header',
+    screen: ModalStack,
   },
   StackWithCustomHeaderBackImage: {
-    description: 'Stack with custom header back image',
-    name: 'Custom header back image',
+    name: 'Stack with custom header back image',
+    screen: StackWithCustomHeaderBackImage,
   },
   StackWithHeaderPreset: {
-    description: 'Masked back button and sliding header items. iOS only.',
     name: 'UIKit-style Header Transitions',
+    screen: StackWithHeaderPreset,
   },
   StackWithTranslucentHeader: {
-    description: 'Render arbitrary translucent content in header background.',
     name: 'Translucent Header',
+    screen: StackWithTranslucentHeader,
   },
   StacksInTabs: {
-    description: 'Nested stack navigation in tabs',
     name: 'Stacks in Tabs',
+    screen: StacksInTabs,
   },
   StacksOverTabs: {
-    description: 'Nested stack navigation that pushes on top of tabs',
     name: 'Stacks over Tabs',
+    screen: StacksOverTabs,
   },
   StacksOverTopTabs: {
-    description: 'Tab navigator in stack with custom header heights',
     name: 'Stacks with non-standard header height',
+    screen: StacksOverTopTabs,
   },
   StacksAndKeys: {
-    description: 'Use keys to link between screens',
     name: 'Link in Stack with keys',
+    screen: StacksAndKeys,
   },
   SwitchWithStacks: {
-    description: 'Jump between routes',
     name: 'Switch between routes',
+    screen: SwitchWithStacks,
   },
-  // MultipleDrawer: {
-  //   description: 'Add any drawer you need',
-  //   name: 'Multiple Drawer Example',
-  // },
   TabsInDrawer: {
-    description: 'A drawer combined with tabs',
     name: 'Drawer + Tabs Example',
+    screen: TabsInDrawer,
   },
-  TabsWithNavigationEvents: {
-    description:
-      'Declarative NavigationEvents component to subscribe to navigation events',
-    name: 'NavigationEvents',
+  Drawer: {
+    name: 'Drawer Example',
+    screen: Drawer,
   },
-  TabsWithNavigationFocus: {
-    description: 'Receive the focus prop to know when a screen is focused',
-    name: 'withNavigationFocus',
+  AnimatedSwitch: {
+    name: 'AnimatedSwitch Example',
+    screen: AnimatedSwitch,
   },
-};
-
-const ExampleRoutes: any = {
-  CustomTabUI,
-  CustomTabs,
-  Drawer,
-  ModalStack,
-  SimpleStack,
-  SimpleTabs,
-  StackWithCustomHeaderBackImage,
-  StackWithTranslucentHeader,
-  StacksAndKeys,
-  StacksOverTabs,
-  SwitchWithStacks,
-  StacksOverTopTabs,
-  StacksInTabs,
-  ...Platform.select({
-    android: {},
-    ios: {
-      StackWithHeaderPreset,
-    },
-  }),
-  TabsInDrawer,
+  CustomTabUI: {
+    name: 'Additional views around Tab navigator',
+    screen: CustomTabUI,
+  },
+  CustomTabs: {
+    name: 'Custom Tabs with router',
+    screen: CustomTabs,
+  },
   LinkStack: {
+    name: 'Deep link in Stack',
     screen: SimpleStack,
     path: 'people/Jordan',
   },
   LinkTabs: {
-    screen: SimpleTabs,
+    name: 'Deep link to Settings Tab',
+    screen: MaterialBottomTabs,
     path: 'settings',
+  },
+  DragLimitedToModal: {
+    name: 'Drag limited to modal',
+    screen: DragLimitedToModal,
+  },
+  EventsStack: { name: 'Events Stack', screen: EventsStack },
+  FullScreen: { name: 'Fullscreen Stack', screen: FullScreen },
+  GestureInteraction: {
+    name: 'Gesture interaction',
+    screen: GestureInteraction,
+  },
+  HeaderBackgroundDefault: {
+    name: 'Default preset for header background',
+    screen: HeaderBackgroundDefault,
+  },
+  HeaderBackgroundFade: {
+    name: 'Fade preset for header background',
+    screen: HeaderBackgroundFade,
+  },
+  HeaderPreset: {
+    name: 'Header presets',
+    screen: HeaderPreset,
+  },
+  IconTabs: { name: 'Tabs with icons', screen: IconTabs },
+  ImageStack: {
+    name: 'Stack with images',
+    screen: ImageStack,
+  },
+  ImmediateTransition: {
+    name: 'Immediate transition',
+    screen: ImmediateTransition,
+  },
+  LifecycleInteraction: {
+    name: 'Lifecycle interaction',
+    screen: LifecycleInteraction,
+  },
+  Lists: { name: 'Lists', screen: Lists },
+  MaterialTopTabs: {
+    name: 'Material top tabs',
+    screen: MaterialTopTabs,
+  },
+  ModalPresentation: {
+    name: 'Modal presentation Stack',
+    screen: ModalPresentation,
+  },
+  ParallaxDrawer: {
+    name: 'Parallax Drawer',
+    screen: ParallaxDrawer,
+  },
+  PerScreenTransitions: {
+    name: 'Per screen transitions',
+    screen: PerScreenTransitions,
+  },
+  RevealStack: {
+    name: 'Reveal animation Stack',
+    screen: RevealStack,
+  },
+  RTLDrawer: { name: 'RTL Srawer', screen: RTLDrawer },
+  StackWithRefocus: {
+    name: 'Stack with refocus',
+    screen: StackWithRefocus,
+  },
+  ShiftingTabs: {
+    name: 'Shifting tabs',
+    screen: ShiftingTabs,
+  },
+  SimpleDrawer: {
+    name: 'Simple drawer',
+    screen: SimpleDrawer,
+  },
+  SimpleDrawerUnmountInactive: {
+    name: 'Simple drawer (unmountInactive)',
+    screen: SimpleDrawerUnmountInactive,
+  },
+  StackAnimationConsumerStack: {
+    name: 'Stack animation consumer',
+    screen: StackAnimationConsumerStack,
+  },
+  StackWithDrawer: {
+    name: 'Stack with drawer',
+    screen: StackWithDrawer,
+  },
+  StyledDrawer: {
+    name: 'Styled drawer',
+    screen: StyledDrawer,
+  },
+  StackWithInput: {
+    name: 'Stack with input',
+    screen: StackWithInput,
+  },
+  TransparentStack: {
+    name: 'Transparent stack',
+    screen: TransparentStack,
   },
 };
 
@@ -278,13 +351,13 @@ class MainScreen extends React.Component<any, State> {
                   backgroundColor: ThemeColors[this.context].bodyContent,
                 }}
               >
-                {Object.keys(ExampleRoutes).map((routeName: string) => (
+                {Object.keys(ExampleInfo).map((routeName: string) => (
                   <RectButton
                     key={routeName}
                     underlayColor="#ccc"
                     activeOpacity={0.3}
                     onPress={() => {
-                      const route = ExampleRoutes[routeName];
+                      const route = ExampleInfo[routeName];
                       if (route.screen || route.path || route.params) {
                         const { path, params, screen } = route;
                         const { router } = screen;
@@ -308,9 +381,6 @@ class MainScreen extends React.Component<any, State> {
                       <Themed.Text style={styles.title}>
                         {ExampleInfo[routeName].name}
                       </Themed.Text>
-                      <Text style={styles.description}>
-                        {ExampleInfo[routeName].description}
-                      </Text>
                     </View>
                   </RectButton>
                 ))}
@@ -330,7 +400,7 @@ class MainScreen extends React.Component<any, State> {
 const Navigation = createAppContainer(
   createStackNavigator(
     {
-      ...ExampleRoutes,
+      ...ExampleInfo,
       Index: {
         screen: MainScreen,
       },
@@ -348,7 +418,7 @@ const Navigation = createAppContainer(
   )
 );
 
-export default () => {
+export default function App() {
   let [theme, setTheme] = React.useState<SupportedThemes>('light');
 
   return (
@@ -391,7 +461,9 @@ export default () => {
       </View>
     </View>
   );
-};
+}
+
+registerRootComponent(App);
 
 const styles = StyleSheet.create({
   backgroundUnderlay: {
@@ -425,14 +497,9 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginVertical: 8,
   },
-  description: {
-    color: '#999',
-    fontSize: 13,
-  },
   item: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    padding: 16,
   },
   itemLight: {
     borderBottomColor: ThemeColors.light.bodyBorder,
@@ -450,6 +517,5 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
   },
 });

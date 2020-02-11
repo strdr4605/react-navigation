@@ -262,4 +262,4 @@ function createDrawerExample(options = {}) {
   return DrawerExample;
 }
 
-export const ParallaxDrawer = createDrawerExample();
+export default createDrawerExample();

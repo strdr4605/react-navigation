@@ -10,7 +10,7 @@ import {
   createStackNavigator,
   NavigationStackScreenProps,
 } from 'react-navigation-stack';
-import SampleText from './SampleText';
+import SampleText from './Shared/SampleText';
 
 interface MyNavScreenProps {
   navigation: NavigationScreenProp<NavigationState>;

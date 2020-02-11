@@ -29,8 +29,8 @@ export default class Albums extends React.Component {
                   style={styles.avatar}
                   source={
                     odd
-                      ? require('../../assets/avatar-2.png')
-                      : require('../../assets/avatar-1.png')
+                      ? require('../assets/avatar-2.png')
+                      : require('../assets/avatar-1.png')
                   }
                 />
                 <View

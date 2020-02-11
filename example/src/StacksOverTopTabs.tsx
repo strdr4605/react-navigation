@@ -21,7 +21,7 @@ import {
 } from 'react-navigation-tabs';
 
 import { Button } from './Shared/ButtonWithMargin';
-import SampleText from './SampleText';
+import SampleText from './Shared/SampleText';
 
 const HEADER_HEIGHT = 64;
 

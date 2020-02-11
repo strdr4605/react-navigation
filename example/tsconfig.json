@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig",
+  "references": [
+    { "path": "../animatd-switch" },
+    { "path": "../core" },
+    { "path": "../drawer" },
+    { "path": "../material-bottom-tabs" },
+    { "path": "../native" },
+    { "path": "../react-navigation" },
+    { "path": "../stack" },
+    { "path": "../tabs" },
+  ],
+  "compilerOptions": {
+    "noImplicitAny": false
+  }
+}
